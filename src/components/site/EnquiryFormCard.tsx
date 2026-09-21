@@ -32,7 +32,7 @@ export function EnquiryFormCard({
   description?: string;
   fields: FieldSpec[];
   submitLabel?: string;
-  defaults?: Partial<Record<string, string>>;
+  defaults?: Record<string, string>;
 }) {
   const [values, setValues] = useState<Record<string, string>>({ ...defaults });
   const [checks, setChecks] = useState<Record<string, string[]>>({});
