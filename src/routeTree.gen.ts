@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedAboutRouteImport } from './routes/_authenticated/about'
+import { Route as AuthenticatedAdoptRouteImport } from './routes/_authenticated/adopt'
+import { Route as AuthenticatedCsrRouteImport } from './routes/_authenticated/csr'
+import { Route as AuthenticatedFosterRouteImport } from './routes/_authenticated/foster'
 import { Route as AuthenticatedGeopetIdRouteImport } from './routes/_authenticated/geopet-id'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
 import { Route as AuthenticatedProgrammesRouteImport } from './routes/_authenticated/programmes'
+import { Route as AuthenticatedVolunteerRouteImport } from './routes/_authenticated/volunteer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,6 +32,21 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthenticatedAboutRoute = AuthenticatedAboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAdoptRoute = AuthenticatedAdoptRouteImport.update({
+  id: '/adopt',
+  path: '/adopt',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCsrRoute = AuthenticatedCsrRouteImport.update({
+  id: '/csr',
+  path: '/csr',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFosterRoute = AuthenticatedFosterRouteImport.update({
+  id: '/foster',
+  path: '/foster',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedGeopetIdRoute = AuthenticatedGeopetIdRouteImport.update({
@@ -45,43 +64,82 @@ const AuthenticatedProgrammesRoute = AuthenticatedProgrammesRouteImport.update({
   path: '/programmes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedVolunteerRoute = AuthenticatedVolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AuthenticatedAboutRoute
+  '/adopt': typeof AuthenticatedAdoptRoute
+  '/csr': typeof AuthenticatedCsrRoute
+  '/foster': typeof AuthenticatedFosterRoute
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
+  '/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AuthenticatedAboutRoute
+  '/adopt': typeof AuthenticatedAdoptRoute
+  '/csr': typeof AuthenticatedCsrRoute
+  '/foster': typeof AuthenticatedFosterRoute
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
+  '/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/about': typeof AuthenticatedAboutRoute
+  '/_authenticated/adopt': typeof AuthenticatedAdoptRoute
+  '/_authenticated/csr': typeof AuthenticatedCsrRoute
+  '/_authenticated/foster': typeof AuthenticatedFosterRoute
   '/_authenticated/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
   '/_authenticated/programmes': typeof AuthenticatedProgrammesRoute
+  '/_authenticated/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/geopet-id' | '/home' | '/programmes'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/adopt'
+    | '/csr'
+    | '/foster'
+    | '/geopet-id'
+    | '/home'
+    | '/programmes'
+    | '/volunteer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/geopet-id' | '/home' | '/programmes'
+  to:
+    | '/'
+    | '/about'
+    | '/adopt'
+    | '/csr'
+    | '/foster'
+    | '/geopet-id'
+    | '/home'
+    | '/programmes'
+    | '/volunteer'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/_authenticated/about'
+    | '/_authenticated/adopt'
+    | '/_authenticated/csr'
+    | '/_authenticated/foster'
     | '/_authenticated/geopet-id'
     | '/_authenticated/home'
     | '/_authenticated/programmes'
+    | '/_authenticated/volunteer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -112,6 +170,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAboutRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/adopt': {
+      id: '/_authenticated/adopt'
+      path: '/adopt'
+      fullPath: '/adopt'
+      preLoaderRoute: typeof AuthenticatedAdoptRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/csr': {
+      id: '/_authenticated/csr'
+      path: '/csr'
+      fullPath: '/csr'
+      preLoaderRoute: typeof AuthenticatedCsrRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/foster': {
+      id: '/_authenticated/foster'
+      path: '/foster'
+      fullPath: '/foster'
+      preLoaderRoute: typeof AuthenticatedFosterRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/geopet-id': {
       id: '/_authenticated/geopet-id'
       path: '/geopet-id'
@@ -133,21 +212,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProgrammesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/volunteer': {
+      id: '/_authenticated/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof AuthenticatedVolunteerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAboutRoute: typeof AuthenticatedAboutRoute
+  AuthenticatedAdoptRoute: typeof AuthenticatedAdoptRoute
+  AuthenticatedCsrRoute: typeof AuthenticatedCsrRoute
+  AuthenticatedFosterRoute: typeof AuthenticatedFosterRoute
   AuthenticatedGeopetIdRoute: typeof AuthenticatedGeopetIdRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
   AuthenticatedProgrammesRoute: typeof AuthenticatedProgrammesRoute
+  AuthenticatedVolunteerRoute: typeof AuthenticatedVolunteerRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAboutRoute: AuthenticatedAboutRoute,
+  AuthenticatedAdoptRoute: AuthenticatedAdoptRoute,
+  AuthenticatedCsrRoute: AuthenticatedCsrRoute,
+  AuthenticatedFosterRoute: AuthenticatedFosterRoute,
   AuthenticatedGeopetIdRoute: AuthenticatedGeopetIdRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
   AuthenticatedProgrammesRoute: AuthenticatedProgrammesRoute,
+  AuthenticatedVolunteerRoute: AuthenticatedVolunteerRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
