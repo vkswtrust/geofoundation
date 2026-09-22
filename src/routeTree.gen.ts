@@ -20,6 +20,7 @@ import { Route as AuthenticatedFosterRouteImport } from './routes/_authenticated
 import { Route as AuthenticatedGeopetIdRouteImport } from './routes/_authenticated/geopet-id'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
 import { Route as AuthenticatedPawsOfIndiaRouteImport } from './routes/_authenticated/paws-of-india'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedProgrammesRouteImport } from './routes/_authenticated/programmes'
 import { Route as AuthenticatedRoadmapRouteImport } from './routes/_authenticated/roadmap'
 import { Route as AuthenticatedSchoolsRouteImport } from './routes/_authenticated/schools'
@@ -81,6 +82,11 @@ const AuthenticatedPawsOfIndiaRoute =
     path: '/paws-of-india',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProgrammesRoute = AuthenticatedProgrammesRouteImport.update({
   id: '/programmes',
   path: '/programmes',
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
   '/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
   '/roadmap': typeof AuthenticatedRoadmapRoute
   '/schools': typeof AuthenticatedSchoolsRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
   '/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
   '/roadmap': typeof AuthenticatedRoadmapRoute
   '/schools': typeof AuthenticatedSchoolsRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/_authenticated/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
   '/_authenticated/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/programmes': typeof AuthenticatedProgrammesRoute
   '/_authenticated/roadmap': typeof AuthenticatedRoadmapRoute
   '/_authenticated/schools': typeof AuthenticatedSchoolsRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/geopet-id'
     | '/home'
     | '/paws-of-india'
+    | '/profile'
     | '/programmes'
     | '/roadmap'
     | '/schools'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/geopet-id'
     | '/home'
     | '/paws-of-india'
+    | '/profile'
     | '/programmes'
     | '/roadmap'
     | '/schools'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/_authenticated/geopet-id'
     | '/_authenticated/home'
     | '/_authenticated/paws-of-india'
+    | '/_authenticated/profile'
     | '/_authenticated/programmes'
     | '/_authenticated/roadmap'
     | '/_authenticated/schools'
@@ -300,6 +312,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPawsOfIndiaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/programmes': {
       id: '/_authenticated/programmes'
       path: '/programmes'
@@ -348,6 +367,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedGeopetIdRoute: typeof AuthenticatedGeopetIdRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
   AuthenticatedPawsOfIndiaRoute: typeof AuthenticatedPawsOfIndiaRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedProgrammesRoute: typeof AuthenticatedProgrammesRoute
   AuthenticatedRoadmapRoute: typeof AuthenticatedRoadmapRoute
   AuthenticatedSchoolsRoute: typeof AuthenticatedSchoolsRoute
@@ -365,6 +385,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedGeopetIdRoute: AuthenticatedGeopetIdRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
   AuthenticatedPawsOfIndiaRoute: AuthenticatedPawsOfIndiaRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedProgrammesRoute: AuthenticatedProgrammesRoute,
   AuthenticatedRoadmapRoute: AuthenticatedRoadmapRoute,
   AuthenticatedSchoolsRoute: AuthenticatedSchoolsRoute,
