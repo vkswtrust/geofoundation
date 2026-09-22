@@ -13,11 +13,17 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedAboutRouteImport } from './routes/_authenticated/about'
 import { Route as AuthenticatedAdoptRouteImport } from './routes/_authenticated/adopt'
+import { Route as AuthenticatedContactRouteImport } from './routes/_authenticated/contact'
 import { Route as AuthenticatedCsrRouteImport } from './routes/_authenticated/csr'
+import { Route as AuthenticatedDonateRouteImport } from './routes/_authenticated/donate'
 import { Route as AuthenticatedFosterRouteImport } from './routes/_authenticated/foster'
 import { Route as AuthenticatedGeopetIdRouteImport } from './routes/_authenticated/geopet-id'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedPawsOfIndiaRouteImport } from './routes/_authenticated/paws-of-india'
 import { Route as AuthenticatedProgrammesRouteImport } from './routes/_authenticated/programmes'
+import { Route as AuthenticatedRoadmapRouteImport } from './routes/_authenticated/roadmap'
+import { Route as AuthenticatedSchoolsRouteImport } from './routes/_authenticated/schools'
+import { Route as AuthenticatedTransparencyRouteImport } from './routes/_authenticated/transparency'
 import { Route as AuthenticatedVolunteerRouteImport } from './routes/_authenticated/volunteer'
 
 const IndexRoute = IndexRouteImport.update({
@@ -39,9 +45,19 @@ const AuthenticatedAdoptRoute = AuthenticatedAdoptRouteImport.update({
   path: '/adopt',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedContactRoute = AuthenticatedContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedCsrRoute = AuthenticatedCsrRouteImport.update({
   id: '/csr',
   path: '/csr',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDonateRoute = AuthenticatedDonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedFosterRoute = AuthenticatedFosterRouteImport.update({
@@ -59,11 +75,33 @@ const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
   path: '/home',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPawsOfIndiaRoute =
+  AuthenticatedPawsOfIndiaRouteImport.update({
+    id: '/paws-of-india',
+    path: '/paws-of-india',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedProgrammesRoute = AuthenticatedProgrammesRouteImport.update({
   id: '/programmes',
   path: '/programmes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedRoadmapRoute = AuthenticatedRoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSchoolsRoute = AuthenticatedSchoolsRouteImport.update({
+  id: '/schools',
+  path: '/schools',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTransparencyRoute =
+  AuthenticatedTransparencyRouteImport.update({
+    id: '/transparency',
+    path: '/transparency',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedVolunteerRoute = AuthenticatedVolunteerRouteImport.update({
   id: '/volunteer',
   path: '/volunteer',
@@ -74,22 +112,34 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AuthenticatedAboutRoute
   '/adopt': typeof AuthenticatedAdoptRoute
+  '/contact': typeof AuthenticatedContactRoute
   '/csr': typeof AuthenticatedCsrRoute
+  '/donate': typeof AuthenticatedDonateRoute
   '/foster': typeof AuthenticatedFosterRoute
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
+  '/roadmap': typeof AuthenticatedRoadmapRoute
+  '/schools': typeof AuthenticatedSchoolsRoute
+  '/transparency': typeof AuthenticatedTransparencyRoute
   '/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AuthenticatedAboutRoute
   '/adopt': typeof AuthenticatedAdoptRoute
+  '/contact': typeof AuthenticatedContactRoute
   '/csr': typeof AuthenticatedCsrRoute
+  '/donate': typeof AuthenticatedDonateRoute
   '/foster': typeof AuthenticatedFosterRoute
   '/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
   '/programmes': typeof AuthenticatedProgrammesRoute
+  '/roadmap': typeof AuthenticatedRoadmapRoute
+  '/schools': typeof AuthenticatedSchoolsRoute
+  '/transparency': typeof AuthenticatedTransparencyRoute
   '/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRoutesById {
@@ -98,11 +148,17 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/_authenticated/about': typeof AuthenticatedAboutRoute
   '/_authenticated/adopt': typeof AuthenticatedAdoptRoute
+  '/_authenticated/contact': typeof AuthenticatedContactRoute
   '/_authenticated/csr': typeof AuthenticatedCsrRoute
+  '/_authenticated/donate': typeof AuthenticatedDonateRoute
   '/_authenticated/foster': typeof AuthenticatedFosterRoute
   '/_authenticated/geopet-id': typeof AuthenticatedGeopetIdRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_authenticated/paws-of-india': typeof AuthenticatedPawsOfIndiaRoute
   '/_authenticated/programmes': typeof AuthenticatedProgrammesRoute
+  '/_authenticated/roadmap': typeof AuthenticatedRoadmapRoute
+  '/_authenticated/schools': typeof AuthenticatedSchoolsRoute
+  '/_authenticated/transparency': typeof AuthenticatedTransparencyRoute
   '/_authenticated/volunteer': typeof AuthenticatedVolunteerRoute
 }
 export interface FileRouteTypes {
@@ -111,22 +167,34 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/adopt'
+    | '/contact'
     | '/csr'
+    | '/donate'
     | '/foster'
     | '/geopet-id'
     | '/home'
+    | '/paws-of-india'
     | '/programmes'
+    | '/roadmap'
+    | '/schools'
+    | '/transparency'
     | '/volunteer'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/adopt'
+    | '/contact'
     | '/csr'
+    | '/donate'
     | '/foster'
     | '/geopet-id'
     | '/home'
+    | '/paws-of-india'
     | '/programmes'
+    | '/roadmap'
+    | '/schools'
+    | '/transparency'
     | '/volunteer'
   id:
     | '__root__'
@@ -134,11 +202,17 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/_authenticated/about'
     | '/_authenticated/adopt'
+    | '/_authenticated/contact'
     | '/_authenticated/csr'
+    | '/_authenticated/donate'
     | '/_authenticated/foster'
     | '/_authenticated/geopet-id'
     | '/_authenticated/home'
+    | '/_authenticated/paws-of-india'
     | '/_authenticated/programmes'
+    | '/_authenticated/roadmap'
+    | '/_authenticated/schools'
+    | '/_authenticated/transparency'
     | '/_authenticated/volunteer'
   fileRoutesById: FileRoutesById
 }
@@ -177,11 +251,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdoptRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/contact': {
+      id: '/_authenticated/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof AuthenticatedContactRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/csr': {
       id: '/_authenticated/csr'
       path: '/csr'
       fullPath: '/csr'
       preLoaderRoute: typeof AuthenticatedCsrRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/donate': {
+      id: '/_authenticated/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof AuthenticatedDonateRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/foster': {
@@ -205,11 +293,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedHomeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/paws-of-india': {
+      id: '/_authenticated/paws-of-india'
+      path: '/paws-of-india'
+      fullPath: '/paws-of-india'
+      preLoaderRoute: typeof AuthenticatedPawsOfIndiaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/programmes': {
       id: '/_authenticated/programmes'
       path: '/programmes'
       fullPath: '/programmes'
       preLoaderRoute: typeof AuthenticatedProgrammesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/roadmap': {
+      id: '/_authenticated/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof AuthenticatedRoadmapRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/schools': {
+      id: '/_authenticated/schools'
+      path: '/schools'
+      fullPath: '/schools'
+      preLoaderRoute: typeof AuthenticatedSchoolsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/transparency': {
+      id: '/_authenticated/transparency'
+      path: '/transparency'
+      fullPath: '/transparency'
+      preLoaderRoute: typeof AuthenticatedTransparencyRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/volunteer': {
@@ -225,22 +341,34 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAboutRoute: typeof AuthenticatedAboutRoute
   AuthenticatedAdoptRoute: typeof AuthenticatedAdoptRoute
+  AuthenticatedContactRoute: typeof AuthenticatedContactRoute
   AuthenticatedCsrRoute: typeof AuthenticatedCsrRoute
+  AuthenticatedDonateRoute: typeof AuthenticatedDonateRoute
   AuthenticatedFosterRoute: typeof AuthenticatedFosterRoute
   AuthenticatedGeopetIdRoute: typeof AuthenticatedGeopetIdRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedPawsOfIndiaRoute: typeof AuthenticatedPawsOfIndiaRoute
   AuthenticatedProgrammesRoute: typeof AuthenticatedProgrammesRoute
+  AuthenticatedRoadmapRoute: typeof AuthenticatedRoadmapRoute
+  AuthenticatedSchoolsRoute: typeof AuthenticatedSchoolsRoute
+  AuthenticatedTransparencyRoute: typeof AuthenticatedTransparencyRoute
   AuthenticatedVolunteerRoute: typeof AuthenticatedVolunteerRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAboutRoute: AuthenticatedAboutRoute,
   AuthenticatedAdoptRoute: AuthenticatedAdoptRoute,
+  AuthenticatedContactRoute: AuthenticatedContactRoute,
   AuthenticatedCsrRoute: AuthenticatedCsrRoute,
+  AuthenticatedDonateRoute: AuthenticatedDonateRoute,
   AuthenticatedFosterRoute: AuthenticatedFosterRoute,
   AuthenticatedGeopetIdRoute: AuthenticatedGeopetIdRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedPawsOfIndiaRoute: AuthenticatedPawsOfIndiaRoute,
   AuthenticatedProgrammesRoute: AuthenticatedProgrammesRoute,
+  AuthenticatedRoadmapRoute: AuthenticatedRoadmapRoute,
+  AuthenticatedSchoolsRoute: AuthenticatedSchoolsRoute,
+  AuthenticatedTransparencyRoute: AuthenticatedTransparencyRoute,
   AuthenticatedVolunteerRoute: AuthenticatedVolunteerRoute,
 }
 
