@@ -470,7 +470,7 @@ export function DonationSettingsPanel() {
   });
 
   const value = (key: string) =>
-    draft?.[key] ?? ((data as Record<string, string | null> | null)?.[key] ?? "") ?? "";
+    draft?.[key] ?? (data as Record<string, string | null> | null)?.[key] ?? "";
 
   const set = (key: string, next: string) => setDraft((prev) => ({ ...(prev ?? {}), [key]: next }));
 
