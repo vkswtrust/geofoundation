@@ -192,7 +192,7 @@ function LoginPage() {
                     Continue with Google
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    We store only your name, Gmail address, profile image and user ID.
+                    We store only your name and email address.
                   </p>
                 </CardContent>
               </Card>
