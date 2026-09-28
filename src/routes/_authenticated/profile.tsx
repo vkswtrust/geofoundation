@@ -67,7 +67,7 @@ function ProfilePage() {
               </div>
               <div className="grid gap-2 text-sm">
                 <p className="text-muted-foreground">
-                  User ID: <span className="font-mono text-xs text-foreground">{user?.id}</span>
+                  User ID: <span className="font-mono text-xs text-foreground">{profile?.member_code ?? "—"}</span>
                 </p>
                 {profile?.created_at ? (
                   <p className="text-muted-foreground">

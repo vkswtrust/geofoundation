@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 
 export interface AppProfile {
   id: string;
+  member_code: string | null;
   email: string | null;
   full_name: string | null;
   avatar_url: string | null;
@@ -32,7 +33,7 @@ async function loadRole(userId: string) {
 async function loadProfile(userId: string) {
   const { data } = await supabase
     .from("profiles")
-    .select("id, email, full_name, avatar_url, created_at, last_login_at")
+    .select("id, member_code, email, full_name, avatar_url, created_at, last_login_at")
     .eq("id", userId)
     .maybeSingle();
   return (data as AppProfile | null) ?? null;
