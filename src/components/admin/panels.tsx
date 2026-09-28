@@ -47,7 +47,7 @@ export function UsersPanel() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select("id, email, full_name, avatar_url, created_at, last_login_at")
+        .select("id, member_code, email, full_name, avatar_url, created_at, last_login_at")
         .order("created_at", { ascending: false });
       if (error) throw error;
       return data;
@@ -57,7 +57,7 @@ export function UsersPanel() {
   const rows = (data ?? []).filter((row) => {
     const q = search.trim().toLowerCase();
     if (!q) return true;
-    return `${row.full_name ?? ""} ${row.email ?? ""} ${row.id}`.toLowerCase().includes(q);
+    return `${row.full_name ?? ""} ${row.email ?? ""} ${row.member_code ?? ""}`.toLowerCase().includes(q);
   });
 
   return (
@@ -106,7 +106,7 @@ export function UsersPanel() {
                       </div>
                     </TableCell>
                     <TableCell className="text-sm">{row.email ?? "—"}</TableCell>
-                    <TableCell className="font-mono text-[11px] text-muted-foreground">{row.id}</TableCell>
+                    <TableCell className="font-mono text-[11px] text-muted-foreground">{row.member_code ?? "—"}</TableCell>
                     <TableCell className="text-xs">{formatDate(row.created_at)}</TableCell>
                     <TableCell className="text-xs">{formatDate(row.last_login_at)}</TableCell>
                   </TableRow>
