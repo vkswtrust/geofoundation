@@ -11,8 +11,9 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // SPA mode also emits a static index.html shell so the client build can be
-    // served by static hosts (e.g. Hostinger) with an .htaccess fallback.
-    spa: { enabled: true },
+    // Prerendering is disabled: it starts a localhost server that Hostinger's build
+    // environment refuses (ECONNREFUSED). scripts/build-spa-shell.mjs renders the
+    // static SPA shell in-process instead.
+    prerender: { enabled: false },
   },
 });
