@@ -29,6 +29,13 @@
       "when": 1790607473244,
       "tag": "0003_tighten_settings_stats_read",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1791192170584,
+      "tag": "0004_admin_delete_enquiries",
+      "breakpoints": true
     }
   ]
 }

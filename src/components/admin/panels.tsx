@@ -171,6 +171,18 @@ export function EnquiriesPanel({
     onError: () => toast.error("Could not update the status."),
   });
 
+  const remove = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("enquiries").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("Submission deleted.");
+      void queryClient.invalidateQueries({ queryKey: ["admin", "enquiries"] });
+    },
+    onError: () => toast.error("Could not delete the submission."),
+  });
+
   const rows = (data ?? []).filter((row) => {
     if (statusFilter !== "all" && row.status !== statusFilter) return false;
     const q = search.trim().toLowerCase();
@@ -240,6 +252,15 @@ export function EnquiriesPanel({
                         ))}
                       </SelectContent>
                     </Select>
+                    <Button
+                      variant="destructive"
+                      size="sm"
+                      onClick={() => {
+                        if (confirm("Delete this submission permanently?")) remove.mutate(row.id);
+                      }}
+                    >
+                      Delete
+                    </Button>
                   </div>
                 </div>
 
