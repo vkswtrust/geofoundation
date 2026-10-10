@@ -6,6 +6,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 process.env.TSS_SHELL = "true";
+process.env.TSS_PRERENDERING = "true";
 process.env.NODE_ENV = process.env.NODE_ENV || "production";
 
 const serverCandidates = [".output/server/index.mjs", "dist/server/index.mjs"].map((p) =>
